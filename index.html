@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Avançado - Curso Completo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Logotipo_SENAI.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --senai-red: #e30613;
+            --senai-dark: #1a1a1a;
+            --senai-gray: #f4f4f4
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background: var(--senai-gray);
+            color: var(--senai-dark)
+        }
+
+        header {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--senai-red);
+            position: relative
+        }
+
+        .logo-senai {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            height: 55px
+        }
+
+        .drive-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background: var(--senai-red);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: none
+        }
+
+        .drive-btn i {
+            margin-right: 6px
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px
+        }
+
+        header p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-weight: 500
+        }
+
+        .autor {
+            font-size: 13px;
+            font-weight: 600
+        }
+
+        .progress-container {
+            background: #ddd;
+            height: 22px;
+            border-radius: 20px;
+            margin: 15px auto;
+            width: 60%
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--senai-red);
+            border-radius: 20px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh
+        }
+
+        .sidebar {
+            width: 320px;
+            background: var(--senai-dark);
+            color: #fff;
+            padding: 25px 20px;
+            overflow-y: auto
+        }
+
+        .sidebar h3 {
+            font-size: 15px;
+            border-bottom: 2px solid var(--senai-red);
+            padding-bottom: 10px
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 10px;
+            margin: 6px 0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            line-height: 1.4
+        }
+
+        .sidebar ul li a:hover {
+            background: var(--senai-red)
+        }
+
+        .active-link {
+            background: var(--senai-red)
+        }
+
+        .locked {
+            opacity: .35;
+            cursor: not-allowed
+        }
+
+        .locked::after {
+            content: " 🔒"
+        }
+
+        .content {
+            flex: 1;
+            padding: 40px
+        }
+
+        section {
+            display: none;
+            background: #fff;
+            padding: 30px;
+            border-left: 6px solid var(--senai-red);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .08)
+        }
+
+        section.active {
+            display: block
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--senai-red);
+            padding-bottom: 6px
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: var(--senai-dark);
+            color: #fff;
+            font-size: 12px;
+            letter-spacing: 1px
+        }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+            border-top: 6px solid var(--senai-red)
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat'
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 10px;
+            background: var(--senai-red);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        @media(max-width:900px) {
+            .container {
+                flex-direction: column
+            }
+
+            .sidebar {
+                width: 100%
+            }
+
+            .logo-senai {
+                position: static;
+                margin-bottom: 10px
+            }
+
+            .drive-btn {
+                position: static;
+                display: block;
+                margin: 10px auto 0 auto;
+                width: 200px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>Acesso ao Curso</h2>
+            <input type="text" id="usuario" placeholder="Usuário">
+            <input type="password" id="senha" placeholder="Senha">
+            <button onclick="login()">Entrar</button>
+        </div>
+    </div>
+
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Logotipo_SENAI.png" class="logo-senai">
+        <a href="https://drive.google.com/drive/folders/12yQodcyCzjC9WXHAwij9-JJjSQLPRZ7x?usp=sharing" target="_blank" class="drive-btn" id="driveBtn"><i
+                class="fa-solid fa-folder"></i>Materiais no Drive</a>
+        <h1>CURSO DE EXCEL AVANÇADO</h1>
+        <p>112 HORAS | 28 DIAS | LIBERAÇÃO SEG A SEX</p>
+        <div class="autor">Curso desenvolvido por LUZARDO LUSTOSA SILVA</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar">0%</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar">
+            <h3>CRONOGRAMA</h3>
+            <ul id="menuDias"></ul>
+        </nav>
+
+        <main class="content" id="conteudoDias"></main>
+    </div>
+
+    <footer>SERVIÇO NACIONAL DE APRENDIZAGEM INDUSTRIAL - SENAI</footer>
+
+    <script>
+        const totalDias = 28;
+        let dataInicio;
+        const nomesSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+
+        const temasCurso = [
+            'Revisão Estratégica e Fundamentos', 'Funções Condicionais (SE, E, OU)', 'SE Aninhado e SEERRO', 'PROCV e PROCH', 'PROCX e ÍNDICE + CORRESP', 'Funções de Texto', 'Funções de Data e Hora', 'Validação de Dados', 'Formatação Condicional', 'Tabelas Inteligentes', 'Gráficos Profissionais', 'Gráficos Dinâmicos', 'Tabela Dinâmica - Fundamentos', 'Tabela Dinâmica - Avançado', 'Segmentação de Dados', 'Painéis (Dashboards)', 'Funções Financeiras', 'Análise de Cenários', 'Ferramenta Atingir Meta', 'Solver Básico', 'Power Query - Introdução', 'Power Query - Transformações', 'Proteção e Segurança', 'Macros - Introdução', 'Gravação de Macros', 'Noções de VBA', 'Automação de Relatórios', 'Projeto Final Integrador'
+        ];
+
+        function login() {
+            const user = document.getElementById('usuario').value;
+            const senha = document.getElementById('senha').value;
+            if (user === 'excel' && senha === 'senai') {
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('driveBtn').style.display = 'inline-block';
+                iniciarCurso();
+            } else { alert('Usuário ou senha inválidos'); }
+        }
+
+        function iniciarCurso() {
+            if (!localStorage.getItem('dataInicioCurso')) {
+                localStorage.setItem('dataInicioCurso', new Date().toISOString());
+            }
+            dataInicio = new Date(localStorage.getItem('dataInicioCurso'));
+            gerarEstrutura();
+            atualizarLiberacao();
+        }
+
+        function gerarEstrutura() {
+            const menu = document.getElementById('menuDias');
+            const conteudo = document.getElementById('conteudoDias');
+            menu.innerHTML = '';
+            conteudo.innerHTML = '';
+
+            let dataTemp = new Date(dataInicio);
+
+            for (let i = 1; i <= totalDias; i++) {
+                while (dataTemp.getDay() === 0 || dataTemp.getDay() === 6) {
+                    dataTemp.setDate(dataTemp.getDate() + 1);
+                }
+
+                const nomeDiaSemana = nomesSemana[dataTemp.getDay()];
+                const tema = temasCurso[i - 1];
+
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.innerHTML = '<strong>Dia ' + i + '</strong><br>' + nomeDiaSemana + '<br><small>' + tema + '</small>';
+                a.onclick = function () { mostrarDia('dia' + i, this) };
+                a.classList.add('locked');
+                li.appendChild(a);
+                menu.appendChild(li);
+
+                const section = document.createElement('section');
+                section.id = 'dia' + i;
+                section.innerHTML = `
+        <h2>Dia ${i} – ${tema}</h2>
+        <p><strong>${nomeDiaSemana}</strong></p>
+        <p>Carga horária: 4 horas</p>
+        <ul>
+            <li>Parte teórica aplicada</li>
+            <li>Exercícios práticos orientados</li>
+            <li>Aplicação em cenário real</li>
+            <li>Checklist de validação</li>
+        </ul>`;
+                conteudo.appendChild(section);
+
+                dataTemp.setDate(dataTemp.getDate() + 1);
+            }
+        }
+
+        function contarDiasUteis(inicio, fim) {
+            let count = 0;
+            let current = new Date(inicio);
+            while (current <= fim) {
+                const dia = current.getDay();
+                if (dia !== 0 && dia !== 6) count++;
+                current.setDate(current.getDate() + 1);
+            }
+            return count;
+        }
+
+        function atualizarLiberacao() {
+            const hoje = new Date();
+            const diasLiberados = contarDiasUteis(dataInicio, hoje);
+            const links = document.querySelectorAll('#menuDias a');
+
+            links.forEach((link, index) => {
+                if (index < diasLiberados && index < totalDias) {
+                    link.classList.remove('locked');
+                } else {
+                    link.classList.add('locked');
+                }
+            });
+
+            if (diasLiberados > 0 && links[diasLiberados - 1]) {
+                mostrarDia('dia' + diasLiberados, links[diasLiberados - 1]);
+            }
+
+            atualizarProgresso(diasLiberados);
+        }
+
+        function atualizarProgresso(liberados) {
+            let percentual = Math.min(Math.round((liberados / totalDias) * 100), 100);
+            const barra = document.getElementById('progressBar');
+            barra.style.width = percentual + '%';
+            barra.innerText = percentual + '%';
+        }
+
+        function mostrarDia(id, elemento) {
+            if (!elemento || elemento.classList.contains('locked')) return;
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active-link'));
+            const sec = document.getElementById(id);
+            if (sec) sec.classList.add('active');
+            elemento.classList.add('active-link');
+        }
+    </script>
+
+</body>
+
+</html>
