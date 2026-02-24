@@ -1,400 +1,527 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel Avançado - Curso Completo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="Logotipo_SENAI.png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso Excel Avançado - SENAI</title>
 
-    <style>
-        :root {
-            --senai-red: #e30613;
-            --senai-dark: #1a1a1a;
-            --senai-gray: #f4f4f4
-        }
+<style>
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f4f6f9;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            background: var(--senai-gray);
-            color: var(--senai-dark)
-        }
+/* HEADER */
+header{
+  background:linear-gradient(90deg,#004a8d,#f37021);
+  color:white;
+  padding:20px;
+  text-align:center;
+}
 
-        header {
-            background: #fff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--senai-red);
-            position: relative
-        }
+header img{
+  height:100px;
+  display:block;
+  margin:0 auto 10px auto;
+}
 
-        .logo-senai {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            height: 55px
-        }
+/* LOGIN */
+#loginOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
 
-        .drive-btn {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            background: var(--senai-red);
-            color: #fff;
-            padding: 8px 14px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            display: none
-        }
+.login-box{
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  width:90%;
+  max-width:350px;
+  text-align:center;
+}
 
-        .drive-btn i {
-            margin-right: 6px
-        }
+.login-box img{
+  height:80px;
+  margin-bottom:15px;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px
-        }
+.login-box input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  font-size:16px;
+}
 
-        header p {
-            margin: 5px 0;
-            font-size: 14px;
-            font-weight: 500
-        }
+.login-box button{
+  width:100%;
+  padding:10px;
+  background:#004a8d;
+  color:white;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+}
 
-        .autor {
-            font-size: 13px;
-            font-weight: 600
-        }
+/* BOTÃO MATERIAL */
+.top-actions{
+  text-align:center;
+  margin:20px;
+}
 
-        .progress-container {
-            background: #ddd;
-            height: 22px;
-            border-radius: 20px;
-            margin: 15px auto;
-            width: 60%
-        }
+.material-btn{
+  background:#f37021;
+  color:white;
+  padding:12px 20px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+}
 
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: var(--senai-red);
-            border-radius: 20px;
-            color: #fff;
-            font-size: 12px;
-            font-weight: 600;
-            text-align: center
-        }
+/* PROGRESSO */
+#progressContainer{
+  width:90%;
+  margin:20px auto;
+  background:#ddd;
+  border-radius:10px;
+  overflow:hidden;
+}
 
-        .container {
-            display: flex;
-            min-height: 100vh
-        }
+#progressBar{
+  height:25px;
+  width:0%;
+  background:#004a8d;
+  color:white;
+  text-align:center;
+  line-height:25px;
+  font-weight:bold;
+}
 
-        .sidebar {
-            width: 320px;
-            background: var(--senai-dark);
-            color: #fff;
-            padding: 25px 20px;
-            overflow-y: auto
-        }
+/* CONTAINER */
+.container{
+  display:flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  gap:20px;
+  padding:20px;
+}
 
-        .sidebar h3 {
-            font-size: 15px;
-            border-bottom: 2px solid var(--senai-red);
-            padding-bottom: 10px
-        }
+/* MODULO */
+.modulo{
+  background:white;
+  border-radius:12px;
+  width:30%;
+  min-width:280px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
 
-        .sidebar ul {
-            list-style: none;
-            padding: 0
-        }
+.modulo h3{
+  background:#004a8d;
+  color:white;
+  margin:0;
+  padding:15px;
+  text-align:center;
+  font-size:18px;
+}
 
-        .sidebar ul li a {
-            display: block;
-            padding: 10px;
-            margin: 6px 0;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            line-height: 1.4
-        }
+.modulo ul{
+  list-style:none;
+  padding:15px;
+  margin:0;
+}
 
-        .sidebar ul li a:hover {
-            background: var(--senai-red)
-        }
+.modulo li{
+  margin-bottom:12px;
+}
 
-        .active-link {
-            background: var(--senai-red)
-        }
+/* DIA CARD */
+.dia-card{
+  background:#fff;
+  border-left:5px solid #f37021;
+  padding:12px;
+  border-radius:8px;
+  transition:0.3s;
+  cursor:pointer;
+}
 
-        .locked {
-            opacity: .35;
-            cursor: not-allowed
-        }
+.dia-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
 
-        .locked::after {
-            content: " 🔒"
-        }
+.dia-card small{
+  display:block;
+  font-size:13px;
+  color:#555;
+}
 
-        .content {
-            flex: 1;
-            padding: 40px
-        }
+.locked{
+  opacity:0.5;
+  pointer-events:none;
+}
 
-        section {
-            display: none;
-            background: #fff;
-            padding: 30px;
-            border-left: 6px solid var(--senai-red);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, .08)
-        }
+.liberado{
+  border-left:5px solid #28a745 !important;
+}
 
-        section.active {
-            display: block
-        }
+.status{
+  font-weight:bold;
+  margin-bottom:5px;
+}
 
-        h2 {
-            font-size: 20px;
-            font-weight: 700;
-            border-bottom: 2px solid var(--senai-red);
-            padding-bottom: 6px
-        }
+/* POPUP */
+.popup-content{
+  display:none;
+  margin-top:10px;
+  padding:15px;
+  background:#eef3f9;
+  border-left:5px solid #f37021;
+  border-radius:6px;
+  animation:fadeIn 0.3s ease-in-out;
+}
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: var(--senai-dark);
-            color: #fff;
-            font-size: 12px;
-            letter-spacing: 1px
-        }
+.popup-content button{
+  margin-top:10px;
+  padding:8px 12px;
+  border:none;
+  background:#004a8d;
+  color:white;
+  cursor:pointer;
+}
 
-        .login-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, .85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999
-        }
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(-5px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
-        .login-box {
-            background: #fff;
-            padding: 40px;
-            width: 350px;
-            text-align: center;
-            border-top: 6px solid var(--senai-red)
-        }
+/* RESPONSIVO */
+@media(max-width:900px){
+  .modulo{width:45%;}
+}
 
-        .login-box input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            font-family: 'Montserrat'
-        }
+@media(max-width:600px){
+  .container{
+    flex-direction:column;
+    align-items:center;
+  }
+  .modulo{width:95%;}
+}
 
-        .login-box button {
-            width: 100%;
-            padding: 10px;
-            background: var(--senai-red);
-            color: #fff;
-            border: none;
-            font-weight: 600;
-            cursor: pointer
-        }
-
-        @media(max-width:900px) {
-            .container {
-                flex-direction: column
-            }
-
-            .sidebar {
-                width: 100%
-            }
-
-            .logo-senai {
-                position: static;
-                margin-bottom: 10px
-            }
-
-            .drive-btn {
-                position: static;
-                display: block;
-                margin: 10px auto 0 auto;
-                width: 200px
-            }
-        }
-    </style>
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#004a8d;
+  color:white;
+  margin-top:40px;
+}
+</style>
 </head>
 
 <body>
 
-    <div class="login-overlay" id="loginOverlay">
-        <div class="login-box">
-            <h2>Acesso ao Curso</h2>
-            <input type="text" id="usuario" placeholder="Usuário">
-            <input type="password" id="senha" placeholder="Senha">
-            <button onclick="login()">Entrar</button>
-        </div>
-    </div>
+<div id="loginOverlay">
+  <div class="login-box">
+    <img src="Logotipo_SENAI.png">
+    <h2>Login</h2>
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+  </div>
+</div>
 
-    <header>
-        <img src="Logotipo_SENAI.png" class="logo-senai">
-        <a href="https://drive.google.com/drive/folders/12yQodcyCzjC9WXHAwij9-JJjSQLPRZ7x?usp=sharing" target="_blank" class="drive-btn" id="driveBtn"><i
-                class="fa-solid fa-folder"></i>Materiais no Drive</a>
-        <h1>CURSO DE EXCEL AVANÇADO</h1>
-        <p>112 HORAS | 28 DIAS | LIBERAÇÃO SEG A SEX</p>
-        <div class="autor">Curso desenvolvido por LUZARDO LUSTOSA SILVA</div>
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar">0%</div>
-        </div>
-    </header>
+<header>
+  <img src="Logotipo_SENAI.png">
+  <h1>EXCEL AVANÇADO</h1>
+  <p>112 HORAS | 28 DIAS | LIBERAÇÃO SEG A SEX</p>
+  <p>Curso desenvolvido por LUZARDO LUSTOSA SILVA</p>
+</header>
 
-    <div class="container">
-        <nav class="sidebar">
-            <h3>CRONOGRAMA</h3>
-            <ul id="menuDias"></ul>
-        </nav>
+<div class="top-actions">
+  <button class="material-btn"
+  onclick="window.open('https://drive.google.com/drive/folders/12yQodcyCzjC9WXHAwij9-JJjSQLPRZ7x','_blank')">
+  📁 Acessar Material do Curso
+  </button>
+</div>
 
-        <main class="content" id="conteudoDias"></main>
-    </div>
+<div id="progressContainer">
+  <div id="progressBar">0%</div>
+</div>
 
-    <footer>SERVIÇO NACIONAL DE APRENDIZAGEM INDUSTRIAL - SENAI</footer>
+<div class="container" id="menuDias"></div>
 
-    <script>
-        const totalDias = 28;
-        let dataInicio;
-        const nomesSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+<footer>
+SERVIÇO NACIONAL DE APRENDIZAGEM INDUSTRIAL - SENAI.
+</footer>
 
-        const temasCurso = [
-            'Revisão Estratégica e Fundamentos', 'Funções Condicionais (SE, E, OU)', 'SE Aninhado e SEERRO', 'PROCV e PROCH', 'PROCX e ÍNDICE + CORRESP', 'Funções de Texto', 'Funções de Data e Hora', 'Validação de Dados', 'Formatação Condicional', 'Tabelas Inteligentes', 'Gráficos Profissionais', 'Gráficos Dinâmicos', 'Tabela Dinâmica - Fundamentos', 'Tabela Dinâmica - Avançado', 'Segmentação de Dados', 'Painéis (Dashboards)', 'Funções Financeiras', 'Análise de Cenários', 'Ferramenta Atingir Meta', 'Solver Básico', 'Power Query - Introdução', 'Power Query - Transformações', 'Proteção e Segurança', 'Macros - Introdução', 'Gravação de Macros', 'Noções de VBA', 'Automação de Relatórios', 'Projeto Final Integrador'
-        ];
+<script>
+const totalDias = 28;
+const dataInicioCurso = new Date(2026,1,23);
 
-        function login() {
-            const user = document.getElementById('usuario').value;
-            const senha = document.getElementById('senha').value;
-            if (user === 'excel' && senha === 'senai') {
-                document.getElementById('loginOverlay').style.display = 'none';
-                document.getElementById('driveBtn').style.display = 'inline-block';
-                iniciarCurso();
-            } else { alert('Usuário ou senha inválidos'); }
-        }
+function login(){
+  const user=document.getElementById('usuario').value;
+  const senha=document.getElementById('senha').value;
+  if(user==='excel' && senha==='senai'){
+    document.getElementById('loginOverlay').style.display='none';
+    iniciarCurso();
+  }else{
+    alert('Usuário ou senha inválidos');
+  }
+}
 
-        function iniciarCurso() {
-            if (!localStorage.getItem('dataInicioCurso')) {
-                localStorage.setItem('dataInicioCurso', new Date().toISOString());
-            }
-            dataInicio = new Date(localStorage.getItem('dataInicioCurso'));
-            gerarEstrutura();
-            atualizarLiberacao();
-        }
+function contarDiasUteis(inicio,fim){
+  if(fim<inicio) return 0;
+  let count=0;
+  let current=new Date(inicio);
+  while(current<=fim){
+    if(current.getDay()!==0 && current.getDay()!==6) count++;
+    current.setDate(current.getDate()+1);
+  }
+  return count;
+}
 
-        function gerarEstrutura() {
-            const menu = document.getElementById('menuDias');
-            const conteudo = document.getElementById('conteudoDias');
-            menu.innerHTML = '';
-            conteudo.innerHTML = '';
+function iniciarCurso(){
+  gerarEstrutura();
+  const hoje=new Date();
+  const diasLiberados=Math.min(contarDiasUteis(dataInicioCurso,hoje),totalDias);
+  atualizarLiberacao(diasLiberados);
+}
 
-            let dataTemp = new Date(dataInicio);
+function gerarEstrutura(){
+const aulas = [
+{
+titulo:"Interface, navegação e digitação de dados.",
+conteudo:["Conhecendo a interface do Excel","Faixa de opções","Navegação entre células"],
+exercicio:"Abra o Excel, crie uma pasta de trabalho em branco e navegue da célula A1 até XFD1048576 usando atalhos."
+},
+{
+titulo:"Seleção de células, linhas, colunas e edição básica.",
+conteudo:["Seleção simples","Seleção múltipla com Ctrl","Edição de conteúdo"],
+exercicio:"Selecione B2:D4 e depois A2 e C2 simultaneamente usando Ctrl."
+},
+{
+titulo:"Copiar, colar e fórmulas de adição e subtração.",
+conteudo:["Copiar e colar","Fórmulas básicas","Uso do ="],
+exercicio:"Digite valores em A1 e B1 e crie uma fórmula de adição em C1."
+},
+{
+titulo:"Multiplicação, divisão e ordem de precedência.",
+conteudo:["Multiplicação","Divisão","Prioridade de operadores"],
+exercicio:"Realize =500/10 e =10*10 em células diferentes."
+},
+{
+titulo:"Formatação visual.",
+conteudo:["Fontes","Cores","Alinhamento","Mesclagem"],
+exercicio:"Mescle A1:F2 para criar um título e aplique cor de fundo."
+},
+{
+titulo:"Formatação de números.",
+conteudo:["Moeda","Contábil","Porcentagem"],
+exercicio:"Digite preços e formate como Moeda."
+},
+{
+titulo:"Referências relativas e absolutas.",
+conteudo:["Referência relativa","Referência absoluta ($)"],
+exercicio:"Crie fórmula com referência absoluta e arraste para baixo."
+},
+{
+titulo:"Gerenciamento de linhas/colunas e AutoSoma.",
+conteudo:["Inserir colunas","Excluir linhas","AutoSoma"],
+exercicio:"Insira nova coluna e use AutoSoma."
+},
+{
+titulo:"Funções essenciais.",
+conteudo:["MÁXIMO","MÍNIMO","MÉDIA","CONT.SE"],
+exercicio:"Use CONT.SE para contar quantas vezes o número 10 aparece."
+},
+{
+titulo:"Classificação e função SE.",
+conteudo:["Classificar dados","Função SE básica"],
+exercicio:"Crie fórmula SE que mostre Aprovado (>5) e Reprovado (<5)."
+},
+{
+titulo:"Formatação Condicional.",
+conteudo:["Regras de Realce","Escalas de Cor"],
+exercicio:"Destaque valores acima de um limite definido."
+},
+{
+titulo:"Nomeação de intervalos.",
+conteudo:["Caixa de Nome","Uso em fórmulas"],
+exercicio:"Nomeie uma célula como Receita e utilize em fórmula."
+},
+{
+titulo:"Múltiplas planilhas e hiperlinks.",
+conteudo:["Criar novas abas","Hiperlinks internos"],
+exercicio:"Crie nova planilha com Shift+F11 e copie dados."
+},
+{
+titulo:"Criação e personalização de Gráficos.",
+conteudo:["Gráfico de colunas","Personalização"],
+exercicio:"Crie gráfico a partir de uma tabela."
+},
+{
+titulo:"Minigráficos (Sparklines).",
+conteudo:["Inserir Minigráficos","Análise de tendência"],
+exercicio:"Insira minigráfico de coluna para mostrar tendência."
+},
+{
+titulo:"Funções PROCV e PROCH.",
+conteudo:["Pesquisa vertical","Pesquisa horizontal"],
+exercicio:"Use PROCV para localizar item em tabela."
+},
+{
+titulo:"Funções de Texto.",
+conteudo:["CONCATENAR","ESQUERDA","DIREITA","EXT.TEXTO"],
+exercicio:"Extraia os primeiros caracteres de uma célula."
+},
+{
+titulo:"Funções de Data e Hora.",
+conteudo:["DIA","MÊS","ANO"],
+exercicio:"Separe uma data em três colunas distintas."
+},
+{
+titulo:"Validação de Dados e Impressão.",
+conteudo:["Validação","Layout da Página"],
+exercicio:"Configure margens e visualize impressão."
+},
+{
+titulo:"Funções SE aninhadas, E e OU.",
+conteudo:["Lógica avançada","Funções condicionais compostas"],
+exercicio:"Crie fórmula com múltiplos critérios usando E."
+},
+{
+titulo:"ÍNDICE e CORRESP.",
+conteudo:["Pesquisa avançada","Combinação dinâmica"],
+exercicio:"Use Colar Especial > Transpor."
+},
+{
+titulo:"Estatísticas avançadas.",
+conteudo:["MEDIANA","MODO","MAIOR","MENOR"],
+exercicio:"Use MAIOR e MENOR para identificar recordes."
+},
+{
+titulo:"Funções de Banco de Dados.",
+conteudo:["BDSOMA","BDCONTAR"],
+exercicio:"Use funções BD para somar com critérios."
+},
+{
+titulo:"Tabelas Dinâmicas.",
+conteudo:["Criação","Pivotagem","Filtros"],
+exercicio:"Crie Tabela Dinâmica para resumir categorias."
+},
+{
+titulo:"Consolidação de Dados.",
+conteudo:["Consolidar múltiplas planilhas"],
+exercicio:"Consolide dados em relatório final."
+},
+{
+titulo:"Introdução a Macros.",
+conteudo:["Gravar Macro","Executar Macro"],
+exercicio:"Grave macro que aplique bordas e negrito."
+},
+{
+titulo:"Auditoria de Fórmulas e Atingir Meta.",
+conteudo:["Rastrear precedentes","Atingir Meta"],
+exercicio:"Use Rastrear Precedentes em uma fórmula."
+},
+{
+titulo:"Dashboards.",
+conteudo:["Integração de gráficos","Segmentação"],
+exercicio:"Monte Dashboard com Tabela Dinâmica e Gráfico."
+}
+];
 
-            for (let i = 1; i <= totalDias; i++) {
-                while (dataTemp.getDay() === 0 || dataTemp.getDay() === 6) {
-                    dataTemp.setDate(dataTemp.getDate() + 1);
-                }
+  const container=document.getElementById('menuDias');
+  container.innerHTML='';
 
-                const nomeDiaSemana = nomesSemana[dataTemp.getDay()];
-                const tema = temasCurso[i - 1];
+  const modulos=[
+    {nome:'Módulo 1 – Excel Básico (10 dias)',inicio:1,fim:10},
+    {nome:'Módulo 2 – Excel Intermediário (9 dias)',inicio:11,fim:19},
+    {nome:'Módulo 3 – Excel Avançado (9 dias)',inicio:20,fim:28}
+  ];
 
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.innerHTML = '<strong>Dia ' + i + '</strong><br>' + nomeDiaSemana + '<br><small>' + tema + '</small>';
-                a.onclick = function () { mostrarDia('dia' + i, this) };
-                a.classList.add('locked');
-                li.appendChild(a);
-                menu.appendChild(li);
+  let dataTemp=new Date(dataInicioCurso);
 
-                const section = document.createElement('section');
-                section.id = 'dia' + i;
-                section.innerHTML = `
-        <h2>Dia ${i} – ${tema}</h2>
-        <p><strong>${nomeDiaSemana}</strong></p>
-        <p>Carga horária: 4 horas</p>
-        <ul>
-            <li>Parte teórica aplicada</li>
-            <li>Exercícios práticos orientados</li>
-            <li>Aplicação em cenário real</li>
-            <li>Checklist de validação</li>
-        </ul>`;
-                conteudo.appendChild(section);
+  modulos.forEach(mod=>{
+    const div=document.createElement('div');
+    div.className='modulo';
+    div.innerHTML=`<h3>${mod.nome}</h3>`;
+    const ul=document.createElement('ul');
 
-                dataTemp.setDate(dataTemp.getDate() + 1);
-            }
-        }
+    for(let i=mod.inicio;i<=mod.fim;i++){
+      while(dataTemp.getDay()===0||dataTemp.getDay()===6){
+        dataTemp.setDate(dataTemp.getDate()+1);
+      }
 
-        function contarDiasUteis(inicio, fim) {
-            let count = 0;
-            let current = new Date(inicio);
-            while (current <= fim) {
-                const dia = current.getDay();
-                if (dia !== 0 && dia !== 6) count++;
-                current.setDate(current.getDate() + 1);
-            }
-            return count;
-        }
+      const dataFormatada=dataTemp.toLocaleDateString('pt-BR');
+      const aula=aulas[i-1];
 
-        function atualizarLiberacao() {
-            const hoje = new Date();
-            const diasLiberados = contarDiasUteis(dataInicio, hoje);
-            const links = document.querySelectorAll('#menuDias a');
+      const li=document.createElement('li');
+      const a=document.createElement('div');
+      a.className="dia-card locked";
+      a.innerHTML=`
+        <div class="status">🔒 Dia ${i}</div>
+        <small>${dataFormatada}</small>
+        <div>${aula.titulo}</div>
+      `;
+      a.onclick=function(){togglePopup(this,i)};
 
-            links.forEach((link, index) => {
-                if (index < diasLiberados && index < totalDias) {
-                    link.classList.remove('locked');
-                } else {
-                    link.classList.add('locked');
-                }
-            });
+      const popup=document.createElement('div');
+      popup.className='popup-content';
+      popup.id='popup'+i;
+      popup.innerHTML=`
+        <h4>Dia ${i} – ${aula.titulo}</h4>
+        <p><strong>Data:</strong> ${dataFormatada}</p>
+        <p><strong>Exercício:</strong> ${aula.exercicio}</p>
+        <button onclick="fecharPopup(${i})">Fechar</button>
+      `;
 
-            if (diasLiberados > 0 && links[diasLiberados - 1]) {
-                mostrarDia('dia' + diasLiberados, links[diasLiberados - 1]);
-            }
+      li.appendChild(a);
+      li.appendChild(popup);
+      ul.appendChild(li);
 
-            atualizarProgresso(diasLiberados);
-        }
+      dataTemp.setDate(dataTemp.getDate()+1);
+    }
 
-        function atualizarProgresso(liberados) {
-            let percentual = Math.min(Math.round((liberados / totalDias) * 100), 100);
-            const barra = document.getElementById('progressBar');
-            barra.style.width = percentual + '%';
-            barra.innerText = percentual + '%';
-        }
+    div.appendChild(ul);
+    container.appendChild(div);
+  });
+}
 
-        function mostrarDia(id, elemento) {
-            if (!elemento || elemento.classList.contains('locked')) return;
-            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active-link'));
-            const sec = document.getElementById(id);
-            if (sec) sec.classList.add('active');
-            elemento.classList.add('active-link');
-        }
-    </script>
+function atualizarLiberacao(diasLiberados){
+  const links=document.querySelectorAll('.dia-card');
+  links.forEach((link,index)=>{
+    if(index<diasLiberados){
+      link.classList.remove('locked');
+      link.classList.add('liberado');
+      link.querySelector('.status').innerHTML=`🔓 Dia ${index+1}`;
+    }
+  });
+
+  let percentual=Math.round((diasLiberados/totalDias)*100);
+  document.getElementById('progressBar').style.width=percentual+'%';
+  document.getElementById('progressBar').innerText=percentual+'%';
+}
+
+function togglePopup(elemento,dia){
+  if(elemento.classList.contains('locked')) return;
+  const popup=document.getElementById('popup'+dia);
+  popup.style.display= popup.style.display==='block'?'none':'block';
+}
+
+function fecharPopup(dia){
+  document.getElementById('popup'+dia).style.display='none';
+}
+</script>
 
 </body>
-
 </html>
