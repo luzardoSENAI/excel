@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Curso Excel Avançado - SENAI</title>
-
+<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" type="image/svg+xml">
 <style>
 body{
   margin:0;
@@ -304,144 +304,144 @@ function iniciarCurso(){
 function gerarEstrutura(){
 const aulas = [
 {
-titulo:"Interface, navegação e digitação de dados.",
-conteudo:["Conhecendo a interface do Excel","Faixa de opções","Navegação entre células"],
-exercicio:"Abra o Excel, crie uma pasta de trabalho em branco e navegue da célula A1 até XFD1048576 usando atalhos."
+titulo:"Introdução e Estética da Planilha",
+conteudo:["Formatação de células no Excel (Parte I e II)","Como formatar textos no Excel"],
+exercicio:"Criar um horário de aulas ou de turnos. O aluno deve utilizar mescla de células, aplicar cores de preenchimento distintas para cada disciplina/turno e utilizar bordas espessas para destacar o cabeçalho."
 },
 {
-titulo:"Seleção de células, linhas, colunas e edição básica.",
-conteudo:["Seleção simples","Seleção múltipla com Ctrl","Edição de conteúdo"],
-exercicio:"Selecione B2:D4 e depois A2 e C2 simultaneamente usando Ctrl."
+titulo:"Produtividade e Primeiros Passos Práticos",
+conteudo:["Recurso de Ajuda e Backup automático","Formatando uma planilha na prática","Auto Preenchimento e Preenchimento Relâmpago"],
+exercicio:"Numa coluna, introduzir o primeiro dia do ano e usar o Auto Preenchimento para arrastar até ao final do mês. Noutra coluna, ter uma lista de nomes completos e utilizar o Preenchimento Relâmpago para separar rapidamente os primeiros nomes dos apelidos."
 },
 {
-titulo:"Copiar, colar e fórmulas de adição e subtração.",
-conteudo:["Copiar e colar","Fórmulas básicas","Uso do ="],
-exercicio:"Digite valores em A1 e B1 e crie uma fórmula de adição em C1."
+titulo:"Organização de Dados e Impressão",
+conteudo:["Formatando dados como Tabela e Colar Valores","Ferramenta Pincel e Congelar Painéis","Trabalhando com Texto para Colunas","Tudo sobre impressão no Excel"],
+exercicio:"Importar uma lista de produtos separados por vírgulas, utilizar Texto para Colunas para os separar, formatar o intervalo como Tabela e congelar a linha superior para que o cabeçalho fique visível ao fazer scroll."
 },
 {
-titulo:"Multiplicação, divisão e ordem de precedência.",
-conteudo:["Multiplicação","Divisão","Prioridade de operadores"],
-exercicio:"Realize =500/10 e =10*10 em células diferentes."
+titulo:"Lógica Matemática no Excel",
+conteudo:["Operações fundamentais (Soma, Subtração, Multiplicação e Divisão) e Ordem de Cálculos","Porcentagem no Excel","Referência de Células (Relativas e Absolutas)"],
+exercicio:"Criar uma folha de orçamentos. Calcular o valor total (Quantidade * Preço Unitário). Numa célula à parte, definir uma taxa de IVA (ex: 23%) e calcular o imposto de cada produto utilizando Referências Absolutas (trancando a célula do IVA com F4)."
 },
 {
-titulo:"Formatação visual.",
-conteudo:["Fontes","Cores","Alinhamento","Mesclagem"],
-exercicio:"Mescle A1:F2 para criar um título e aplique cor de fundo."
+titulo:"Análise Rápida e Primeiras Condicionais",
+conteudo:["Funções MÉDIA, MÁXIMO e MÍNIMO","Funções de contagem e soma condicional simples: SOMASE e CONT.SE"],
+exercicio:"Numa pauta de avaliações, utilizar as funções MÁXIMO, MÍNIMO e MÉDIA para encontrar a nota mais alta, a mais baixa e a média da turma. Usar CONT.SE para contar quantos alunos obtiveram nota igual ou superior a 10."
 },
 {
-titulo:"Formatação de números.",
-conteudo:["Moeda","Contábil","Porcentagem"],
-exercicio:"Digite preços e formate como Moeda."
+titulo:"Manipulação de Textos e Datas",
+conteudo:["Funções de Texto: CONCATENAR, Direita, Esquerda, Ext.texto, Localizar/Substituir, MAIÚSCULA & MINÚSCULA","Funções de Data: HOJE, AGORA, DATA, DIA, MÊS, ANO e DATAM"],
+exercicio:"Utilizar CONCATENAR (ou UNIRTEXTO) para juntar o nome do aluno e o seu número de matrícula. Noutra coluna, inserir a data atual com HOJE() e calcular a data de vencimento de uma propina somando 30 dias."
 },
 {
-titulo:"Referências relativas e absolutas.",
-conteudo:["Referência relativa","Referência absoluta ($)"],
-exercicio:"Crie fórmula com referência absoluta e arraste para baixo."
+titulo:"Condicionais e Visualização Inicial",
+conteudo:["Introdução à Função SE","Passo a Passo da Formatação Condicional (Todas as regras, Escalas, Ícones e Barras)","Criando Gráficos no Excel (Elementos, Tipos, Design) e Minigráficos"],
+exercicio:"Aplicar Formatação Condicional na pauta do Dia 5: notas negativas a vermelho e positivas a verde. Utilizar a Função SE para criar uma coluna de estado que escreva automaticamente 'Aprovado' ou 'Reprovado'."
 },
 {
-titulo:"Gerenciamento de linhas/colunas e AutoSoma.",
-conteudo:["Inserir colunas","Excluir linhas","AutoSoma"],
-exercicio:"Insira nova coluna e use AutoSoma."
+titulo:"Auditoria e Estruturação de Fórmulas",
+conteudo:["Mostrando e destacando fórmulas (Auditoria)","Intervalos para fórmulas e Nomeação de Intervalos","Copiando/colando valores com Drag and Drop","Calculando em diversas guias e Hierarquia de Fórmulas"],
+exercicio:"Nomear um intervalo de células de uma tabela de preços como 'Precos_Tabela'. Numa guia separada, criar uma fórmula que multiplique uma quantidade pelos valores desse intervalo nomeado. Utilizar a Auditoria de Fórmulas para rastrear os precedentes."
 },
 {
-titulo:"Funções essenciais.",
-conteudo:["MÁXIMO","MÍNIMO","MÉDIA","CONT.SE"],
-exercicio:"Use CONT.SE para contar quantas vezes o número 10 aparece."
+titulo:"Lógica Condicional Avançada (Parte I)",
+conteudo:["Aprofundamento na Função SE (Várias Funções SE na mesma Fórmula)","Função SES"],
+exercicio:"Substituir o SE simples por uma função SES (ou SEs aninhados) para categorizar o desempenho das vendas de funcionários em: 'Excelente', 'Bom', 'Suficiente' ou 'Insuficiente', dependendo do valor faturado."
 },
 {
-titulo:"Classificação e função SE.",
-conteudo:["Classificar dados","Função SE básica"],
-exercicio:"Crie fórmula SE que mostre Aprovado (>5) e Reprovado (<5)."
+titulo:"Lógica Condicional Avançada (Parte II)",
+conteudo:["Integração da Função SES com a Função E e Função OU"],
+exercicio:"Criar um sistema de bónus. Utilizar a função SE combinada com E e OU para atribuir um bónus apenas se o funcionário tiver vendas > 5000€ E faltas = 0."
 },
 {
-titulo:"Formatação Condicional.",
-conteudo:["Regras de Realce","Escalas de Cor"],
-exercicio:"Destaque valores acima de um limite definido."
+titulo:"Estatística Aplicada",
+conteudo:["Funções MÉDIA, MEDIANA e MODA","Criando Ranking automático","Encontrando células em branco (CONTAR.VAZIO, CONT.VALORES, CONT.NÚM)"],
+exercicio:"Numa lista de idades de clientes, calcular a MEDIANA e a MODA. Numa lista de presenças, utilizar CONTAR.VAZIO para identificar quantos dias não foram registados."
 },
 {
-titulo:"Nomeação de intervalos.",
-conteudo:["Caixa de Nome","Uso em fórmulas"],
-exercicio:"Nomeie uma célula como Receita e utilize em fórmula."
+titulo:"Cálculos com Múltiplos Critérios",
+conteudo:["Médias com condições: MÉDIASE e MÉDIASES","Contagem e Soma complexas: CONT.SES, SOMASES, MÁXIMOSES e MÍNIMOSES"],
+exercicio:"Numa folha de cálculo de Recursos Humanos, calcular a média salarial apenas do departamento de 'Marketing' (MÉDIASE) e somar os salários totais de 'Vendas' da região 'Norte' (SOMASES)."
 },
 {
-titulo:"Múltiplas planilhas e hiperlinks.",
-conteudo:["Criar novas abas","Hiperlinks internos"],
-exercicio:"Crie nova planilha com Shift+F11 e copie dados."
+titulo:"Funções de Banco de Dados",
+conteudo:["Funções BD: BDSOMA, BDCONTAR, BDMÁX, BDMÍN, BDMÉDIA e BDEXTRAIR"],
+exercicio:"Construir uma base de dados de inventário. Criar um pequeno painel superior onde o aluno digita critérios (ex: Categoria e Fornecedor) e utilizar BDSOMA e BDCONTAR para calcular automaticamente o total em armazém apenas dos itens que cumprem esses critérios."
 },
 {
-titulo:"Criação e personalização de Gráficos.",
-conteudo:["Gráfico de colunas","Personalização"],
-exercicio:"Crie gráfico a partir de uma tabela."
+titulo:"Aprofundamento em Datas e Tempos",
+conteudo:["Função DATADIF","Função DIA.DA.SEMANA combinada com a Função SE"],
+exercicio:"Utilizar a função DATADIF para calcular a idade exata em anos e meses dos funcionários a partir das suas datas de nascimento. Usar DIA.DA.SEMANA combinado com SE para indicar se um dia de trabalho caiu num 'Fim de semana' ou 'Dia Útil'."
 },
 {
-titulo:"Minigráficos (Sparklines).",
-conteudo:["Inserir Minigráficos","Análise de tendência"],
-exercicio:"Insira minigráfico de coluna para mostrar tendência."
+titulo:"Tratamento Avançado de Textos",
+conteudo:["Função ARRUMAR, CONCAT, UNIRTEXTO","Funções MUDAR, SUBSTITUIR e NÚM.CARACT"],
+exercicio:"Receber uma base de dados 'suja' (com espaços extra e códigos antigos). Utilizar ARRUMAR para limpar os espaços e SUBSTITUIR para trocar códigos de área telefónicos antigos por novos."
 },
 {
-titulo:"Funções PROCV e PROCH.",
-conteudo:["Pesquisa vertical","Pesquisa horizontal"],
-exercicio:"Use PROCV para localizar item em tabela."
+titulo:"Tratamento de Erros e Validação",
+conteudo:["Funções de Informação (ÉTEXTO, ÉNÚM e É.NÃO.TEXTO)","Conhecendo os erros no Excel, Função ÉERRO com SE, e Função SEERRO"],
+exercicio:"Provocar intencionalmente um erro de divisão por zero (#DIV/0!) numa folha de cálculo de margens de lucro. Em seguida, envolver a fórmula numa função SEERRO para apresentar a mensagem 'Dados Incompletos' em vez do erro."
 },
 {
-titulo:"Funções de Texto.",
-conteudo:["CONCATENAR","ESQUERDA","DIREITA","EXT.TEXTO"],
-exercicio:"Extraia os primeiros caracteres de uma célula."
+titulo:"O Motor de Busca do Excel (Parte I)",
+conteudo:["PROCV e PROCH","PROCV DUPLO e Erros comuns no PROCV"],
+exercicio:"Criar um formulário de faturação. O aluno deve digitar o Código do Produto e usar o PROCV para buscar automaticamente a Descrição e o Preço Unitário numa tabela matriznoutra folha."
 },
 {
-titulo:"Funções de Data e Hora.",
-conteudo:["DIA","MÊS","ANO"],
-exercicio:"Separe uma data em três colunas distintas."
+titulo:"O Motor de Busca do Excel (Parte II)",
+conteudo:["PROCV com CORRESP","Funções ESCOLHER e PARÂMETRO"],
+exercicio:"Aprimorar a fatura anterior: combinar o PROCV com a função CORRESP para que o núm_índice_coluna seja dinâmico, evitando que a fórmula se quebre se adicionarmos uma nova coluna à tabela matriz."
 },
 {
-titulo:"Validação de Dados e Impressão.",
-conteudo:["Validação","Layout da Página"],
-exercicio:"Configure margens e visualize impressão."
+titulo:"Buscas Matriciais",
+conteudo:["Função ÍNDICE","O poder da combinação ÍNDICE e CORRESP"],
+exercicio:"Resolver o limite do PROCV (que só procura da esquerda para a direita). O aluno terá o nome do funcionário e deverá utilizar ÍNDICE e CORRESP para procurar o seu ID de funcionário que se encontra numa coluna à esquerda do nome."
 },
 {
-titulo:"Funções SE aninhadas, E e OU.",
-conteudo:["Lógica avançada","Funções condicionais compostas"],
-exercicio:"Crie fórmula com múltiplos critérios usando E."
+titulo:"Estruturação de Tabelas Dinâmicas",
+conteudo:["Introdução e Requisitos para Tabela Dinâmica","Criando a Tabela e utilizando as Recomendadas","Pivotando campos e Configurações da Tabela"],
+exercicio:"A partir de uma base de 500+ linhas de vendas, inserir uma Tabela Dinâmica. Pivotar os dados para mostrar o total de faturação por mês nas linhas e por vendedor nas colunas."
 },
 {
-titulo:"ÍNDICE e CORRESP.",
-conteudo:["Pesquisa avançada","Combinação dinâmica"],
-exercicio:"Use Colar Especial > Transpor."
+titulo:"Dinâmicas Avançadas",
+conteudo:["Criando Tabela Dinâmica com dados externos","Consolidando Tabelas Dinâmicas"],
+exercicio:"Consolidar Tabelas Dinâmicas. O aluno terá três separadores (Lisboa, Porto, Faro) com estruturas idênticas e terá de criar uma única Tabela Dinâmica que consolide os dados das três regiões."
 },
 {
-titulo:"Estatísticas avançadas.",
-conteudo:["MEDIANA","MODO","MAIOR","MENOR"],
-exercicio:"Use MAIOR e MENOR para identificar recordes."
+titulo:"Introdução à Automação e ETL",
+conteudo:["Texto para Colunas com Power Query","Entendendo o que é Macro e conhecendo o VBA"],
+exercicio:"Utilizar o Power Query para importar um ficheiro de texto (.txt ou .csv), limpar as colunas desnecessárias no editor do Power Query e carregar os dados limpos de volta para o Excel."
 },
 {
-titulo:"Funções de Banco de Dados.",
-conteudo:["BDSOMA","BDCONTAR"],
-exercicio:"Use funções BD para somar com critérios."
+titulo:"Aplicação de Macros",
+conteudo:["Gravando a Primeira Macro","Macro com Referências Relativas, Segurança e Execução na barra de Acesso Rápido"],
+exercicio:"Gravar a primeira Macro (VBA). A macro deve formatar uma tabela selecionada: aplicar bordas, preenchimento cinzento no cabeçalho e formato de moeda. Inserir uma 'Forma' (botão) na folha e atribuir-lhe essa Macro."
 },
 {
-titulo:"Tabelas Dinâmicas.",
-conteudo:["Criação","Pivotagem","Filtros"],
-exercicio:"Crie Tabela Dinâmica para resumir categorias."
+titulo:"Gráficos Avançados (Parte I)",
+conteudo:["A arte dos Gráficos Dinâmicos","Gráficos Complexos: Velocímetro, Meta vs Realizado, Comparação, Funil de Vendas"],
+exercicio:"Criar um Gráfico de Funil de Vendas com base num processo comercial (Contactos > Reuniões > Propostas > Fechos) e construir um gráfico de Meta vs. Realizado cruzando barras com linhas."
 },
 {
-titulo:"Consolidação de Dados.",
-conteudo:["Consolidar múltiplas planilhas"],
-exercicio:"Consolide dados em relatório final."
+titulo:"Gráficos Avançados (Parte II)",
+conteudo:["Gráficos: PARETO, Bidirecional e Avaliação de Desempenho","Interatividade: Gráficos com Barra de Rolagem, Caixas de Combinação e Formatação Condicional"],
+exercicio:"Construir um Gráfico de Pareto para analisar as principais reclamações de clientes. Inserir uma Caixa de Combinação (Controlos de Formulário) para alternar a visualização dos dados."
 },
 {
-titulo:"Introdução a Macros.",
-conteudo:["Gravar Macro","Executar Macro"],
-exercicio:"Grave macro que aplique bordas e negrito."
+titulo:"Construção de Dashboards (Parte I)",
+conteudo:["Planeamento, Desenho e Paleta de Cores","Preparação rigorosa da Base de Dados"],
+exercicio:"Preparação do 'Backend'. Os alunos devem criar separadores distintos para a 'Base de Dados', 'Cálculos/Apoio' e 'Dashboard'. Devem estruturar todas as Tabelas Dinâmicas necessárias na folha de cálculos."
 },
 {
-titulo:"Auditoria de Fórmulas e Atingir Meta.",
-conteudo:["Rastrear precedentes","Atingir Meta"],
-exercicio:"Use Rastrear Precedentes em uma fórmula."
+titulo:"Construção de Dashboards (Parte II)",
+conteudo:["Montagem e Formatação do Dashboard Profissional","Dashboards com Power View (Fluxo de Caixa)"],
+exercicio:"Montar o painel final (Frontend). Inserir Gráficos Dinâmicos no separador Dashboard, remover as linhas de grelha e aplicar Segmentações de Dados (Slicers) conectadas a todos os gráficos, criando um ambiente totalmente interativo."
 },
 {
-titulo:"Dashboards.",
-conteudo:["Integração de gráficos","Segmentação"],
-exercicio:"Monte Dashboard com Tabela Dinâmica e Gráfico."
+titulo:"Encerramento, Integrações e Mercado",
+conteudo:["Indicadores Estratégicos e Funções fáceis para Entrevista de Emprego","Integração do Excel com o PowerPoint (Slides Mestres, Imagens)","Integração do Excel com o Word (Edição de PDF e Modelos)"],
+exercicio:"Integrar o Dashboard com o PowerPoint. Os alunos devem copiar os gráficos principais do Dashboard e fazer uma 'Colagem Especial (Ligar)' num slide em branco, provando que ao alterar um dado no Excel, o slide se atualiza automaticamente."
 }
 ];
 
@@ -483,9 +483,18 @@ exercicio:"Monte Dashboard com Tabela Dinâmica e Gráfico."
       const popup=document.createElement('div');
       popup.className='popup-content';
       popup.id='popup'+i;
+      
+      // Monta os tópicos do conteúdo em HTML
+      let conteudoHTML = '';
+      aula.conteudo.forEach(item => {
+        conteudoHTML += `<li>${item}</li>`;
+      });
+
       popup.innerHTML=`
         <h4>Dia ${i} – ${aula.titulo}</h4>
         <p><strong>Data:</strong> ${dataFormatada}</p>
+        <p><strong>Conteúdo:</strong></p>
+        <ul style="padding-left: 20px; list-style-type: disc;">${conteudoHTML}</ul>
         <p><strong>Exercício:</strong> ${aula.exercicio}</p>
         <button onclick="fecharPopup(${i})">Fechar</button>
       `;
